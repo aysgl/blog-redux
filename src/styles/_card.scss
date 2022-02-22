@@ -1,0 +1,24 @@
+@function getRandom($min, $max) {
+  $rand: random();
+  $result: $min + floor($rand * (($max - $min)+1));
+  @return $result;
+}
+
+@for $i from 1 through 100 {
+  .card-#{$i} {
+    background-color: #{rgba(random(255), random(255), random(255))} !important;
+    border-radius: #{getRandom(4, 14)}rem !important;
+    overflow: hidden;
+    transition: all 0.5s;
+    img {
+      filter: opacity(0.2) blur(8px);
+    }
+    // &:nth-child(#{$i}) {
+    //   --circle-color: #{rgba(random(255), random(255), random(255))};
+    // }
+    &:hover {
+      transform: scale(1.05);
+      transition: all 0.5s;
+    }
+  }
+}
