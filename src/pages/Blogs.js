@@ -5,7 +5,7 @@ import { getBlogAsync } from '../redux/blogs/blogSlice';
 import AddBlog from '../components/AddBlog';
 
 export default function Blogs() {
-    const blogs = useSelector(state => state.blogs.items)
+    const blogs = useSelector(state => state.blogs.posts)
     const dispatch = useDispatch();
 
     useEffect(() => {

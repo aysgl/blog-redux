@@ -12,16 +12,16 @@ export const getSlugAsync = createAsyncThunk('blogs/getSlugAsync', async (id) =>
 export const blogSlice = createSlice({
     name: 'blogs',
     initialState: {
-        items: [],
+        posts: [],
         isLoading: false,
         error: null,
     },
     reducers: {
         addBlog: (state, action) => {
-            state.items.push(action.payload)
+            state.posts.push(action.payload)
         },
         nextBlog: (state, action) => {
-            state.items = action.payload;
+            state.posts = action.payload;
         }
     },
     extraReducers: {
@@ -29,7 +29,7 @@ export const blogSlice = createSlice({
             state.isLoading = true;
         },
         [getBlogAsync.fulfilled]: (state, action) => {
-            state.items = action.payload;
+            state.posts = action.payload;
             state.isLoading = false;
         },
         [getBlogAsync.rejected]: (state, action) => {
@@ -40,7 +40,7 @@ export const blogSlice = createSlice({
             state.isLoading = true;
         },
         [getSlugAsync.fulfilled]: (state, action) => {
-            state.items = action.payload;
+            state.posts = action.payload;
             state.isLoading = false;
         },
         [getSlugAsync.rejected]: (state, action) => {

@@ -6,7 +6,7 @@ import { getSlugAsync, nextBlog } from '../redux/blogs/blogSlice';
 
 export default function BlogDetails() {
     let params = useParams();
-    const blogs = useSelector(state => state.blogs.items)
+    const blogs = useSelector(state => state.blogs.posts)
     const dispatch = useDispatch();
 
     useEffect(() => {
