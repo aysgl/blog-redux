@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card, CardImg, CardImgOverlay, CardTitle, CardText } from 'reactstrap';
-import { getSlugAsync } from '../redux/blogs/blogSlice';
+import { getSlugAsync, nextBlog } from '../redux/blogs/blogSlice';
 
 export default function BlogDetails() {
     let params = useParams();
@@ -13,16 +13,14 @@ export default function BlogDetails() {
         dispatch(getSlugAsync(params.blogid));
     }, [dispatch])
 
-    const nextB = blogs.id + 1;
-    const nextBlog = blogs.title
-
     return (
         <Container fluid className="text-white px-0 py-5">
+
             <Container>
                 <div className='d-flex align-items-center justify-content-center text-center w-100 h-100'>
                     <div>
                         <Row>
-                            <Col md={4} className="mx-auto mb-4">
+                            <Col md={3} className="mx-auto mb-4">
                                 <Card inverse className={`card-${blogs.id}`}>
                                     <CardImg id={`img-${blogs.id}`}
                                         alt="Card image cap"
@@ -38,12 +36,12 @@ export default function BlogDetails() {
                         </Row>
                         <Row>
                             <Col md={8} className="mx-auto">
-                                <h2 className='display-1 lh-1 mb-4'>
+                                <h2 className='display-2 lh-1 mb-4'>
                                     {blogs.title}
                                 </h2>
                             </Col>
                             <Col md={10} className="mx-auto">
-                                <h3 className='h1'>
+                                <h3 className='h2'>
                                     {blogs.body}
                                 </h3>
                             </Col>
@@ -62,7 +60,10 @@ export default function BlogDetails() {
                         </a>
                     </Col>
                     <Col md={3} className="me-auto">
-                        <a href={`${blogs.id + 1}`}>
+                        <a
+                            // href={dispatch(nextBlog({ id: blogs.id }))}
+                            href={`${blogs.id + 1}`}
+                        >
                             <Card inverse className={`card-${blogs.id + 1}`}>
                                 <CardTitle tag="h1" className='text-center'>
                                     next
@@ -72,6 +73,6 @@ export default function BlogDetails() {
                     </Col>
                 </Row>
             </Container>
-        </Container>
+        </Container >
     )
 }

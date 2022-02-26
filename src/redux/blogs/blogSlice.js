@@ -19,6 +19,9 @@ export const blogSlice = createSlice({
     reducers: {
         addBlog: (state, action) => {
             state.items.push(action.payload)
+        },
+        nextBlog: (state, action) => {
+            state.items = action.payload;
         }
     },
     extraReducers: {
@@ -47,5 +50,5 @@ export const blogSlice = createSlice({
     }
 });
 
-export const { addBlog } = blogSlice.actions;
+export const { addBlog, nextBlog } = blogSlice.actions;
 export default blogSlice.reducer;

@@ -16,11 +16,14 @@ export default function Blogs() {
 
     return (
         <Container className='py-5'>
-            <AddBlog />
+
             <Row className='g-2'>
+                <Col key={2113123213} lg={4} md={6}>
+                    <AddBlog />
+                </Col>
                 {blogs.map(i =>
                     <Col key={i.id} lg={4} md={6}>
-                        <a href={`blogs/${i.id}`}>
+                        <a href={`${i.id}`}>
                             <Card inverse className={`card-${i.id}`}>
                                 <CardImg id={`img-${i.id}`}
                                     alt="Card image cap"
