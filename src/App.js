@@ -5,13 +5,15 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import NotFound from './components/NotFound';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index path="/" element={<Blogs />} />
+        <Route path="/" element={<Blogs />} />
         <Route path='/:blogid' element={<BlogDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

@@ -25,7 +25,7 @@ export default function AddBlog() {
                 <CardImgOverlay className='d-flex align-items-center justify-content-center'>
                     <CardTitle tag="h1" className='text-center'>
                         <Input placeholder='add retro post' size="lg" className='bg-transparent rounded-0 border-0 border-bottom' value={title} onChange={(e) => setTitle(e.target.value)} />
-                        <Input placeholder='add retro post description' size="lg" className='bg-transparent rounded-0 border-0 border-bottom' value={desc} onChange={(e) => setDesc(e.target.value)} />
+                        {/* <Input placeholder='add retro post description' size="lg" className='bg-transparent rounded-0 border-0 border-bottom' value={desc} onChange={(e) => setDesc(e.target.value)} /> */}
                     </CardTitle>
                 </CardImgOverlay>
             </Card>

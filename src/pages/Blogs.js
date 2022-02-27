@@ -12,7 +12,7 @@ export default function Blogs() {
         dispatch(getBlogAsync());
     }, [dispatch])
 
-    // console.log(blogs);
+    console.log(blogs);
 
     return (
         <Container className='py-5'>
