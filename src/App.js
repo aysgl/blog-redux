@@ -3,9 +3,8 @@ import BlogDetails from './pages/BlogDetails';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
 } from "react-router-dom";
-import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Blogs />} />
         <Route path='/:blogid' element={<BlogDetails />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

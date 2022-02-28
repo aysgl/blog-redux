@@ -1,12 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getBlogAsync = createAsyncThunk('blogs/getBlogAsync', async () => {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-    return await res.json();
+    try {
+        const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+        return await res.json();
+    } catch (err) {
+        console.log('Looks like there was a problem: ', err);
+    }
 })
+
+
 export const getSlugAsync = createAsyncThunk('blogs/getSlugAsync', async (id) => {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-    return await res.json();
+    try {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+        return await res.json();
+    } catch (err) {
+        console.log('Looks like there was a problem: ', err);
+    }
 })
 
 export const blogSlice = createSlice({
