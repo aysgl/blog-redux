@@ -1,30 +1,30 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Row, Col, Card, CardImg, CardImgOverlay, CardTitle, CardText } from 'reactstrap';
+import { Container, Row, Col, Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
 import { getBlogAsync } from '../redux/blogs/blogSlice';
-import AddBlog from '../components/AddBlog';
+import { BlogContext } from '../redux/context';
 
-export default function Blogs() {
+
+const Blogs = () => {
     const blogs = useSelector(state => state.blogs.posts)
+    const { colors, getRandomRadius } = useContext(BlogContext)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getBlogAsync());
-    }, [dispatch])
+    }, [])
 
-    console.log(blogs);
 
     return (
         <Container className='py-5'>
-
             <Row className='g-2'>
-                <Col key={2113123213} lg={4} md={6}>
-                    <AddBlog />
-                </Col>
                 {blogs.map(i =>
-                    <Col key={i.id} lg={4} md={6}>
+                    <Col key={i.id} lg={4} md={6} >
                         <a href={`${i.id}`}>
-                            <Card inverse className={`card-${i.id}`}>
+                            <Card inverse style={{
+                                backgroundColor: colors[Math.floor(Math.random() * 9) + 1],
+                                borderRadius: getRandomRadius(100, 200)
+                            }}>
                                 <CardImg id={`img-${i.id}`}
                                     alt="Card image cap"
                                     src={`https://picsum.photos/300/300?random=${i.id}`}
@@ -43,3 +43,4 @@ export default function Blogs() {
         </Container >
     )
 }
+export default Blogs
